@@ -16,7 +16,7 @@ class CircleObstacle(ObstacleInterface):
     
     def draw(self, canvasArea):
         cv2.circle(canvasArea, Utility.getCoordinatesInWorldFrame(self.center), 
-                   self.radius, CONSTANT.COLOR_RED)
+                   self.radius, CONSTANT.COLOR_RED, -1)
         cv2.imshow(CONSTANT.WINDOW_NAME, canvasArea)
         
     def isOutside(self, coord):
