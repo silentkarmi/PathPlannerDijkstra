@@ -1,3 +1,4 @@
+from ast import Constant
 from time import sleep
 import numpy as np
 import cv2
@@ -12,6 +13,14 @@ class Canvas:
     
     def __init__(self):
         self._canvasArea = np.zeros((CONSTANT.CANVAS_HEIGHT, CONSTANT.CANVAS_WIDTH, 3), np.uint8)
+        self._obstacles = []
+        
+    def addObstacle(self, objObstacle):
+        self._obstacles.append(objObstacle)
+    
+    def drawObstacles(self):
+        for objObstacle in self._obstacles:
+            objObstacle.draw(self._canvasArea)
     
     def drawAnimatedLineTest(self):
         i = 0
@@ -25,11 +34,7 @@ class Canvas:
             coordEnd = self.getCoordinatesInWorldFrame((i + 1, i + 1))
             cv2.line(self._canvasArea , coordStart, coordEnd, (0, 255, 0), 1)
             i += 1
-            cv2.imshow("window_name", self._canvasArea)
+            cv2.imshow(CONSTANT.WINDOW_NAME, self._canvasArea)
 
         cv2.destroyAllWindows()
-        
-    def getCoordinatesInWorldFrame(self, coord):
-        x, y = coord
-        y = CONSTANT.CANVAS_HEIGHT - y
-        return (x, y)
+    
