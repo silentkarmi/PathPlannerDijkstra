@@ -1,19 +1,41 @@
 #!/usr/bin/env python3
 # Author @ Kartikeya Mishra
 
-from constants import CONSTANT
-from canvas import Canvas
-
 import cv2
+from traversal import Traversal
+from node import Node
 
-from obstacles.circleObstacle import CircleObstacle
 
 if __name__ == "__main__":
-
-    canvaArea = Canvas()
-    objCircle = CircleObstacle((300, 185), 40)
-    canvaArea.addObstacle(objCircle)
-    canvaArea.drawObstacles()
-    print(objCircle.isOutside((260, 160)))
-    print(objCircle.isOutside((263, 160)))
-    cv2.waitKey(0)
+    
+    while (1):
+        startXCoord = int(input("\nStart X Coordinate:"))
+        startYCoord = int(input("Start Y Coordinate:"))
+        
+        startCoord = (startXCoord, startYCoord) 
+        objTraversal = Traversal()
+        objTraversal.startNode = Node(startCoord, None)
+        if Node.isCoordValid(startCoord) and \
+            objTraversal.canvaArea.isOutsideObstacleSpace(objTraversal.startNode):
+                
+            endXCoord = int(input("End X Coordinate:"))
+            endYCoord = int(input("End Y Coordinate:"))
+        
+            endCoord = (endXCoord, endYCoord)
+            objTraversal.endNode = Node(endCoord, None)
+            
+            if Node.isCoordValid(endCoord) and \
+            objTraversal.canvaArea.isOutsideObstacleSpace(objTraversal.endNode):
+                objTraversal.createNodeTree()
+                objTraversal.backTrack()
+                objTraversal.drawSolution()
+                cv2.waitKey(0)
+                quit()
+            else:
+                print("Invalid End Coordinates. Try Again.\n")
+        else:
+            print("Invalid Start Coordinates. Try Again.\n")
+    
+    
+    
+    
