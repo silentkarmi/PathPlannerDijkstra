@@ -4,7 +4,7 @@
 import cv2
 from traversal import Traversal
 from node import Node
-
+import time
 
 if __name__ == "__main__":
     
@@ -26,9 +26,11 @@ if __name__ == "__main__":
             
             if Node.isCoordValid(endCoord) and \
             objTraversal.canvaArea.isOutsideObstacleSpace(objTraversal.endNode):
+                start_time = time.time()
                 objTraversal.createNodeTree()
                 objTraversal.backTrack()
                 objTraversal.drawSolution()
+                print("--- %s seconds for finding and drawing the solution ---" % (time.time() - start_time))
                 cv2.waitKey(0)
                 quit()
             else:

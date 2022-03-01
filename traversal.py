@@ -12,11 +12,12 @@ from obstacles.circleObstacle import CircleObstacle
 
 @dataclass
 class Traversal:
-    _openList: list()
-    _closedList: list()
-    _listSolution: list()
-    
+
     def __init__(self):
+        self._closedList = set()
+        self._openList = []
+        self._listSolution = []
+        
         self.canvaArea = Canvas()
         
         objCircle = CircleObstacle((300, 185), 40)
@@ -39,24 +40,11 @@ class Traversal:
             isNodeSafe = self.canvaArea.isOutsideObstacleSpace(node)
             
             if isNodeSafe:
-                isNodeInClosedList = self.isNodeInClosedList(node)
+                isNodeInClosedList = node.coord in self._closedList
                 if not isNodeInClosedList:
                     nodeInWorkspace = self.isNodeInOpenListThenUpdate(node)
                     if not nodeInWorkspace:
-                        # push it to the top of the list
-                        # print(node.coord," ",node.cost2come)
                         heapq.heappush(self._openList, node)
-    
-    # checks if the node is visted otherwise resolve it  
-    def isNodeInClosedList(self, node):
-        isClosed = False
-        if isinstance(node, Node):
-            for tempNode in self._closedList:
-                if tempNode.coord == node.coord:
-                    isClosed = True 
-                    break
-                    
-        return isClosed
     
     def isNodeInOpenListThenUpdate(self, node):
         isInOpenList = False
@@ -75,8 +63,6 @@ class Traversal:
         return nodeToCheck.coord == self.endNode.coord
     
     def createNodeTree(self):
-        self._openList = []
-        self._closedList = []
         
         self.pushNode(self.startNode)
         lastPercent = 0 
@@ -85,7 +71,7 @@ class Traversal:
             
             # pops an element from the top of the list
             tempNode = heapq.heappop(self._openList)     
-            self._closedList.append(tempNode)  
+            self._closedList.add(tempNode.coord)  
             self.canvaArea.drawNode(tempNode)
             
             cv2.waitKey(1)
