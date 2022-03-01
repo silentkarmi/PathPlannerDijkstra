@@ -9,6 +9,7 @@ from constants import CONSTANT
 from canvas import Canvas
 from node import Node
 from obstacles.circleObstacle import CircleObstacle
+from obstacles.polygonObstacle import PolygonObstacle
 
 @dataclass
 class Traversal:
@@ -22,6 +23,12 @@ class Traversal:
         
         objCircle = CircleObstacle((300, 185), 40)
         self.canvaArea.addObstacle(objCircle)
+        
+        objTriangularPolygon = PolygonObstacle([(36, 185),
+                                                (115, 210),
+                                                (80, 180),
+                                                (105, 100)])
+        self.canvaArea.addObstacle(objTriangularPolygon)
         
         self.canvaArea.drawObstacles()
         

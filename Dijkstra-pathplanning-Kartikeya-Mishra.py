@@ -9,34 +9,34 @@ import time
 if __name__ == "__main__":
     
     while (1):
-        startXCoord = int(input("\nStart X Coordinate:"))
-        startYCoord = int(input("Start Y Coordinate:"))
+        startXCoord = 5 #int(input("\nStart X Coordinate:"))
+        startYCoord = 5 #int(input("Start Y Coordinate:"))
         
         startCoord = (startXCoord, startYCoord) 
         objTraversal = Traversal()
         objTraversal.startNode = Node(startCoord, None)
-        if Node.isCoordValid(startCoord) and \
-            objTraversal.canvaArea.isOutsideObstacleSpace(objTraversal.startNode):
+        # if Node.isCoordValid(startCoord) and \
+        #     objTraversal.canvaArea.isOutsideObstacleSpace(objTraversal.startNode):
                 
-            endXCoord = int(input("End X Coordinate:"))
-            endYCoord = int(input("End Y Coordinate:"))
+        endXCoord = 395 #int(input("End X Coordinate:"))
+        endYCoord = 245 #int(input("End Y Coordinate:"))
+    
+        endCoord = (endXCoord, endYCoord)
+        objTraversal.endNode = Node(endCoord, None)
         
-            endCoord = (endXCoord, endYCoord)
-            objTraversal.endNode = Node(endCoord, None)
-            
-            if Node.isCoordValid(endCoord) and \
-            objTraversal.canvaArea.isOutsideObstacleSpace(objTraversal.endNode):
-                start_time = time.time()
-                objTraversal.createNodeTree()
-                objTraversal.backTrack()
-                objTraversal.drawSolution()
-                print("--- %s seconds for finding and drawing the solution ---" % (time.time() - start_time))
-                cv2.waitKey(0)
-                quit()
-            else:
-                print("Invalid End Coordinates. Try Again.\n")
-        else:
-            print("Invalid Start Coordinates. Try Again.\n")
+        # if Node.isCoordValid(endCoord) and \
+        # objTraversal.canvaArea.isOutsideObstacleSpace(objTraversal.endNode):
+        start_time = time.time()
+        objTraversal.createNodeTree()
+        objTraversal.backTrack()
+        objTraversal.drawSolution()
+        print("--- %s seconds for finding and drawing the solution ---" % (time.time() - start_time))
+        cv2.waitKey(0)
+        quit()
+        #     else:
+        #         print("Invalid End Coordinates. Try Again.\n")
+        # else:
+        #     print("Invalid Start Coordinates. Try Again.\n")
     
     
     
