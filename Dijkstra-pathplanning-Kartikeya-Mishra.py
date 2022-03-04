@@ -27,6 +27,7 @@ if __name__ == "__main__":
         # if Node.isCoordValid(endCoord) and \
         # objTraversal.canvaArea.isOutsideObstacleSpace(objTraversal.endNode):
         start_time = time.time()
+        objTraversal.canvaArea.drawObstacles()
         objTraversal.createNodeTree()
         objTraversal.backTrack()
         objTraversal.drawSolution()

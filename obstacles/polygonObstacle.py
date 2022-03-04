@@ -2,6 +2,7 @@
 # Author @ Kartikeya Mishra
 
 import cv2
+import math
 import numpy as np
 from dataclasses import dataclass
 from obstacles.obstacleInterface import ObstacleInterface
@@ -23,6 +24,7 @@ class PolygonObstacle(ObstacleInterface):
         cv2.imshow(CONSTANT.WINDOW_NAME, canvasArea)
         
     def isOutside(self, coord):
+        # created line equations to describe the polygon
         result = True
         linePlaneEquationValues = []
         x, y = coord
@@ -43,21 +45,24 @@ class PolygonObstacle(ObstacleInterface):
             else:
                 slope = (y2 - y1) / (x2 - x1)
                 c = y1 - slope * x1
-                               
-                # if i == 0:
-                #     c = c - CONSTANT.CLEARANCE
-                # elif i == 1:
-                #     c = c + CONSTANT.CLEARANCE
-                # elif i == 2:
-                #     c = c + CONSTANT.CLEARANCE
-                # else:
-                #     c = c - CONSTANT.CLEARANCE
+                
+                if(slope != 0):
+                    
+                    difference = (CONSTANT.CLEARANCE * math.sqrt(1 + slope**2))
+                                   
+                    if i == 0:
+                        c = c + difference
+                    elif i == 1:
+                        c = c - difference
+                    elif i == 2:
+                        c = c + difference
+                    else:
+                        c = c - difference
                 
                 value = y - slope * x - c
             linePlaneEquationValues.append(value)
             
         result = ((linePlaneEquationValues[0] > 0 or linePlaneEquationValues[3] < 0) or 
                   (linePlaneEquationValues[1] < 0 and linePlaneEquationValues[2] > 0))
-        #   or (linePlaneEquationValues[1] < 0 or linePlaneEquationValues[2]) > 0)
         
-        return result #result > 0
+        return result

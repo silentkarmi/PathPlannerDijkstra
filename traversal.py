@@ -9,6 +9,7 @@ from constants import CONSTANT
 from canvas import Canvas
 from node import Node
 from obstacles.circleObstacle import CircleObstacle
+from obstacles.hexagonObstacle import HexagonObstacle
 from obstacles.polygonObstacle import PolygonObstacle
 
 @dataclass
@@ -30,7 +31,15 @@ class Traversal:
                                                 (105, 100)])
         self.canvaArea.addObstacle(objTriangularPolygon)
         
-        self.canvaArea.drawObstacles()
+        # objHexagonPolygon = HexagonObstacle([(165, 79.79275),
+        #                                         (165, 120.2073),
+        #                                         (200, 140.4145),
+        #                                         (235, 120.2073),
+        #                                         (235, 79.79275),
+        #                                         (200, 59.5855)
+        #                                         ])
+        # self.canvaArea.addObstacle(objHexagonPolygon)
+        
         
         self.startNode = None
         self.endNode = None
