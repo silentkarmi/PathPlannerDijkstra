@@ -31,15 +31,13 @@ class Traversal:
                                                 (105, 100)])
         self.canvaArea.addObstacle(objTriangularPolygon)
         
-        # objHexagonPolygon = HexagonObstacle([(165, 79.79275),
-        #                                         (165, 120.2073),
-        #                                         (200, 140.4145),
-        #                                         (235, 120.2073),
-        #                                         (235, 79.79275),
-        #                                         (200, 59.5855)
-        #                                         ])
-        # self.canvaArea.addObstacle(objHexagonPolygon)
-        
+        objHexagonPolygon = HexagonObstacle([(165, round(79.79275)),
+                                            (165, round(120.2073)),
+                                            (200, round(140.4145)),
+                                            (235, round(120.2073)),
+                                            (235, round(79.79275)),
+                                            (200, round(59.5855))])
+        self.canvaArea.addObstacle(objHexagonPolygon)
         
         self.startNode = None
         self.endNode = None

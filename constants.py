@@ -5,10 +5,7 @@ from curses import COLOR_WHITE
 from dataclasses import dataclass
 
 @dataclass
-class CONSTANT:
-    START_COORDINATES = (10, 10)
-    END_COORDINATES = (50, 50)
-    
+class CONSTANT:   
     CANVAS_WIDTH = 400
     CANVAS_HEIGHT = 250
     
@@ -21,6 +18,6 @@ class CONSTANT:
     
     ORIGIN_POINT_OFFSET = CANVAS_HEIGHT
     COLOR_RED = (0,0,255)
-    COLOR_GREEN = (0, 255, 0)
+    COLOR_GREEN = (0, 100, 0)
     COLOR_BLUE = (255, 0, 0)
     COLOR_WHITE = (255, 255, 255)
