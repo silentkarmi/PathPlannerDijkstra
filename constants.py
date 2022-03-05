@@ -9,7 +9,7 @@ class CONSTANT:
     CANVAS_WIDTH = 400
     CANVAS_HEIGHT = 250
     
-    CLEARANCE = 5 #5mm
+    CLEARANCE = 5 # 5mm clearance
     
     WINDOW_NAME = "Path_Planner"
   

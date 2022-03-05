@@ -24,7 +24,7 @@ class PolygonObstacle(ObstacleInterface):
         cv2.imshow(CONSTANT.WINDOW_NAME, canvasArea)
         
     def isOutside(self, coord):
-        # created line equations to describe the polygon
+        # created line equations to describe the boomerang polygon
         result = True
         linePlaneEquationValues = []
         x, y = coord

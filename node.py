@@ -37,10 +37,10 @@ class Node:
     @staticmethod   
     def isCoordValid(coord):
         x, y = coord
-        if x <= CONSTANT.CANVAS_WIDTH - CONSTANT.CLEARANCE and \
-        y <= CONSTANT.CANVAS_HEIGHT - CONSTANT.CLEARANCE and \
-        x >= CONSTANT.CLEARANCE  and \
-        y >= CONSTANT.CLEARANCE:
+        if x < CONSTANT.CANVAS_WIDTH - CONSTANT.CLEARANCE and \
+        y < CONSTANT.CANVAS_HEIGHT - CONSTANT.CLEARANCE and \
+        x > CONSTANT.CLEARANCE  and \
+        y > CONSTANT.CLEARANCE:
             return True
         else:
             return False

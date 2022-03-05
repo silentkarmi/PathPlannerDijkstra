@@ -14,7 +14,7 @@ class HexagonObstacle(PolygonObstacle):
     points: list()
                
     def isOutside(self, coord):
-        # created line equations to describe the polygon
+        # created line equations to describe the hexagonal polygon
         result = True
         linePlaneEquationValues = []
         x, y = coord
