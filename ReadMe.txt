@@ -18,7 +18,9 @@ It uses Dijikstra's algorithm to find path for the given map
     - obstacles package - contains the boomerang polygon obstacle, circle obstacle and regular hexagon obstacle related files
     - utility.py - functions which used throughout Program
     - constants.py - declare constants which used throughout the Program
->> Note Python3 is used to write the code
+    - traversal.py - this is where the Dijikstra algorithm is implemented
+>> Video Ouput of the program, included in the zip: djikstra_output_mishra_k.mkv
+>> Note: Python3 is used to write the code
 >> Command to run from terminal:
 python3 Dijkstra-pathplanning-Kartikeya-Mishra.py
 

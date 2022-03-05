@@ -32,7 +32,7 @@ if __name__ == "__main__":
                 objTraversal.createNodeTree()
                 objTraversal.backTrack()
                 objTraversal.drawSolution()
-                print("--- %s seconds for finding and drawing the solution ---" % (time.time() - start_time))
+                print("--- %s seconds for finding the solution ---" % (time.time() - start_time))
                 cv2.waitKey(0)
                 quit()
             else:
